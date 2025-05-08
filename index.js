@@ -1,41 +1,43 @@
-class Calculator {
-  constructor() {
-    this.result = 0;
-  }
+import java.util.Scanner;
 
-  add(a, b) {
-    this.result = a + b;
-    return this.result;
-  }
+public class Calculator {
 
-  subtract(a, b) {
-    this.result = a - b;
-    return this.result;
-  }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter first number:");
+        double num1 = scanner.nextDouble();
 
-  multiply(a, b) {
-    this.result = a * b;
-    return this.result;
-  }
+        System.out.println("Enter an operator (+, -, *, /):");
+        char operator = scanner.next().charAt(0);
 
-  divide(a, b) {
-    if (b === 0) {
-      throw new Error("Division by zero is not allowed");
+        System.out.println("Enter second number:");
+        double num2 = scanner.nextDouble();
+
+        double result;
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error: Division by zero is not allowed.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Error: Invalid operator. Please enter one of these: +, -, *, /");
+                return;
+        }
+
+        System.out.println("The result is: " + result);
     }
-    this.result = a / b;
-    return this.result;
-  }
-
-  clear() {
-    this.result = 0;
-  }
 }
-
-// Example usage:
-const calc = new Calculator();
-console.log(calc.add(5, 3)); // 8
-console.log(calc.subtract(10, 4)); // 6
-console.log(calc.multiply(2, 7)); // 14
-console.log(calc.divide(8, 2)); // 4
-calc.clear();
-console.log(calc.result); // 0
