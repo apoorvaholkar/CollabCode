@@ -20,7 +20,7 @@ class Calculator {
 
   divide(a, b) {
     if (b === 0) {
-      throw new Error("Cannot divide by zero");
+      throw new Error("Division by zero is not allowed");
     }
     this.result = a / b;
     return this.result;
